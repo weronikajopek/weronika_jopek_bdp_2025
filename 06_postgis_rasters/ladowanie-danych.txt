@@ -1,0 +1,32 @@
+W psql:
+
+psql -h localhost -d postgres
+
+\c postgis_raster
+
+\dt public.*
+\dt vectors.*
+\dt rasters.*
+
+
+Ładowanie danych rastrowych:
+
+W terminalu macOS:
+
+/usr/local/bin/raster2pgsql -s 3763 -N -32767 -t 100x100 -I -C -M \
+~/Desktop/06_postgis_rasters/06_raster_data/srtm_1arc_v3.tif rasters.dem \
+| psql -d postgis_raster -U weronikajopek
+
+
+Ładowanie wysokości:
+
+W terminalu macOS:
+
+/usr/local/bin/raster2pgsql -s 3763 -N -32767 -t 128x128 -I -C -M \
+"/Users/weronikajopek/Desktop/06_postgis_rasters/06_raster_data/Landsat8_L1TP_RGBN.tif" rasters.landsat8 \
+| psql -d postgis_raster -U weronikajopek
+
+Sprawdzenie:
+
+W VS Code:
+SELECT * FROM public.raster_columns;

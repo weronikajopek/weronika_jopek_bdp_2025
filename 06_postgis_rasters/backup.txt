@@ -1,0 +1,4 @@
+w terminalu macOS:
+
+pg_restore -d postgis_raster -U weronikajopek -h localhost ~/Desktop/06_postgis_rasters/06_raster_data/postgis_raster.backup
+
